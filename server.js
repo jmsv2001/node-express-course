@@ -1,4 +1,5 @@
 /* ---------   View http://expressjs.com/  ---------- */
+/*PostMan Invite Link https://app.getpostman.com/join-team?invite_code=444fb30657110561c13365fe54a86fa4 */
 
 const express = require('express');     // Access to the express library by searching your node_modules for "express"
 const app = express();                  // Creates an instance of the express constructor, which we will name "app"
@@ -28,18 +29,18 @@ app.get('/users/:id',function(req,res)   // Words with a colon in front of them 
 	})
 })
 
-app.post('/login',function(req,res){    
+app.post('/login',function(req,res){    // Routes HTTP POST requests to the specified path with the specified callback functions
     // Typically passwords are encrypted using something like bcrypt before sending to database
-    const username=req.body.username;
-    const password=req.body.password;
+    const username=req.body.username;   // Defines username. req.body Contains key-value pairs of data submitted in the request body
+    const password=req.body.password;   // Defines password
 
     // This should come from the database
     const mockUsername="billyTheKid";
     const mockPassword="superSecret";
 
-    if (username===mockUsername && password===mockPassword){
+    if (username===mockUsername && password===mockPassword){   // Compare the data entered with those in the database
         // In practice, use JSON web token sign method here to make an encrypted token
-        res.json({
+        res.json({                                // If correct send:
               success: true,
               message: 'password and username match!',
               token: 'encrypted token goes here'
