@@ -29,6 +29,17 @@ app.get('/users/:id',function(req,res)   // Words with a colon in front of them 
 	})
 })
 
+// ---------- My code
+app.get('/tools/:id',function(req,res)   // Words with a colon in front of them in the url are treated as variables
+{
+	console.log(req.params.id)          // Can access the value of each variable through req.params
+	res.json({                          // Response JSON
+		success: true,
+		message: 'got one user',
+		user: req.params.id
+	})
+})
+
 app.post('/login',function(req,res){    // Routes HTTP POST requests to the specified path with the specified callback functions
     // Typically passwords are encrypted using something like bcrypt before sending to database
     const username=req.body.username;   // Defines username. req.body Contains key-value pairs of data submitted in the request body
