@@ -14,6 +14,16 @@ app.get('/users', function(req,res)     // GET requests are used to send only li
          })
 })
 
+app.get('/users/:id',function(req,res)   // Words with a colon in front of them in the url are treated as variables
+{
+	console.log(req.params.id)          // Can access the value of each variable through req.params
+	res.json({
+		success: true,
+		message: 'got one user',
+		user: req.params.id
+	})
+})
+
 app.listen(8000,function(){             // app.listen method will start up the server locally on the port you give
     console.log("server is running")    // in this case the base url is: http://localhost:8000
     })                                  // To end this process, push CTRL+C
